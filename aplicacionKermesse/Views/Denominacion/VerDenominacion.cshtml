@@ -1,0 +1,43 @@
+﻿@model aplicacionKermesse.Models.tbl_denominacion
+
+<div>
+    <h4>Detalles de Denominacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor_letras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor_letras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_moneda.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_moneda.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Regresar", "denominacion")
+</p>

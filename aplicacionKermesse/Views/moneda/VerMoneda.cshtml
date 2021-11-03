@@ -1,0 +1,32 @@
+﻿@model aplicacionKermesse.Models.tbl_moneda
+
+@{
+    ViewBag.Title = "Ver Moneda";
+}
+
+<h2>Detalles Moneda</h2>
+
+<div>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.signo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.signo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Regresar", "moneda")
+</p>

@@ -1,0 +1,33 @@
+﻿@model aplicacionKermesse.Models.tbl_moneda
+@{
+    ViewBag.Title = "Guardar Moneda";
+}
+
+<style>
+    .error{
+        color: red;
+    }
+</style>
+@using(Html.BeginForm("Guardar", "moneda", FormMethod.Post))
+{
+    <div class="container">
+        <div class="form-group">
+            <label>Nombre de la Moneda</label> 
+            @Html.ValidationMessageFor(x => x.nombre, "", new { @class = "text-danger" }) 
+            @Html.TextBoxFor(x => x.nombre, new { @class = "form-control", @placeholder = "Dollar" })
+        </div>
+
+        <div class="form-group">
+            <label>Signo de la Moneda</label>
+            @Html.ValidationMessageFor(x => x.signo, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(x => x.signo, new { @class = "form-control", @placeholder = "$" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn-success btn" name="btnSend">Aceptar</button>
+            <button type="reset" class="btn-warning btn" name="btnLimpiar">Limpiar</button>
+            <a href="@Url.Action("moneda")" class="btn btn-default"> Regresar </a>
+            <!--Html.ActionLink("Regresar", "moneda") -->
+        </div>
+    </div>
+ }

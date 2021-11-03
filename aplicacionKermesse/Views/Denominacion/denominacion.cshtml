@@ -1,0 +1,62 @@
+﻿@model IEnumerable<aplicacionKermesse.Models.tbl_denominacion>
+
+@{
+    ViewBag.Title = "Gestion de Denominacion";
+}
+
+<h2>Gestion de Denominacion</h2>
+
+<p>
+    <a href="@Url.Action("guardarDenominacion")" class="btn btn-default"> <i class="glyphicon glyphicon-plus"></i> Nueva Denominacion </a>
+</p>
+
+@using (Html.BeginForm("FiltrarDenominacion", "denominacion", FormMethod.Post))
+{
+    <div class="row">
+        <div class="form-group col-xs-12">
+            @Html.TextBox("cadena", null, new { @class = "form-control col-md-4", @placeholder = "Buscar" })
+            <span class="input-group">
+                <button type="submit" class="btn btn-block btn-success col-md-4"> Buscar </button>
+            </span>
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Moneda
+        </th>
+        <th>
+            Valor Letras
+        </th>
+        <th>
+            Valor Numerico
+        </th>
+        <th>
+            Opciones
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_moneda.nombre) (@Html.DisplayFor(modelItem => item.tbl_moneda.signo))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valor_letras)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valor)
+            </td>
+            <td>
+                <a href="@Url.Action("VerDenominacion", new { id = item.id_denominacion})" class="btn btn-xs btn-primary"> <i class="glyphicon glyphicon-eye-open"></i> Detalles </a>
+                <a href="@Url.Action("EditarDenominacion", new { id = item.id_denominacion })" class="btn btn-xs btn-warning"> <i class="glyphicon glyphicon-pencil"></i> Modificar </a>
+                <a href="@Url.Action("borrarDenominacion", new { id = item.id_denominacion })" class="btn btn-xs btn-danger"> <i class="glyphicon glyphicon-trash"></i> Eliminar </a>
+            </td>
+        </tr>
+    }
+
+</table>
+

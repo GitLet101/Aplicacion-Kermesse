@@ -205,6 +205,12 @@
     <Compile Include="Models\tbl_parroquia.cs">
       <DependentUpon>modeloKermesse.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_parroquia.cs">
+      <DependentUpon>modeloKermesse.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_productos.cs">
+      <DependentUpon>modeloKermesse.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_productos.cs">
       <DependentUpon>modeloKermesse.tt</DependentUpon>
     </Compile>

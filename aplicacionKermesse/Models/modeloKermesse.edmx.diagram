@@ -6,20 +6,20 @@
     <edmx:Diagrams>
       <Diagram DiagramId="fa6e23058b2f4d61bbe55cbb5e1ea839" Name="Diagram1">
         <EntityTypeShape EntityType="BD_KermesseModel.sysdiagram" Width="1.5" PointX="7.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_KermesseModel.tbl_arqueocaja" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_KermesseModel.tbl_arqueocaja_det" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_KermesseModel.tbl_arqueocaja" Width="1.5" PointX="7.125" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_KermesseModel.tbl_arqueocaja_det" Width="1.5" PointX="8.875" PointY="22.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_bonos" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_KermesseModel.tbl_cat_gastos" Width="1.5" PointX="3.75" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_KermesseModel.tbl_cat_gastos" Width="1.5" PointX="7.125" PointY="27" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_cat_producto" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_comunidad" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_KermesseModel.tbl_denominacion" Width="1.5" PointX="6" PointY="29.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_KermesseModel.tbl_gastos" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_KermesseModel.tbl_denominacion" Width="1.5" PointX="12.125" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_KermesseModel.tbl_gastos" Width="1.5" PointX="8.75" PointY="27" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_ingreso_com" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_ingresocom_det" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_kermesse" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_listaprecio" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_listaprecio_det" Width="1.5" PointX="7.5" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_KermesseModel.tbl_moneda" Width="1.5" PointX="3.75" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_KermesseModel.tbl_moneda" Width="1.5" PointX="10.5" PointY="27" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_opciones" Width="1.5" PointX="3.75" PointY="37" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_parroquia" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KermesseModel.tbl_productos" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />

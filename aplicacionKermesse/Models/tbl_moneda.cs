@@ -11,7 +11,8 @@ namespace aplicacionKermesse.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_moneda
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,7 +25,15 @@ namespace aplicacionKermesse.Models
         }
     
         public int id_moneda { get; set; }
+
+        [Display(Name = "Nombre de la Moneda")]
+        [Required(ErrorMessage = "Escriba un nombre valido!")]
+        [StringLength(50, ErrorMessage = "El numero maximo de caracteres es de 50")]
         public string nombre { get; set; }
+
+        [Display(Name = "Signo de la Moneda")]
+        [Required(ErrorMessage = "Escriba un signo valido")]
+        [StringLength(10, ErrorMessage = "El numero maximo de caracteres es de 10")]
         public string signo { get; set; }
         public int estado { get; set; }
     

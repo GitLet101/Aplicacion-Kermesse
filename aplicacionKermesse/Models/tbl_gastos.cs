@@ -11,14 +11,25 @@ namespace aplicacionKermesse.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class tbl_gastos
     {
         public int id_gasto { get; set; }
+        [Display(Name = "Kermesse")]
+        [Required(ErrorMessage = "Seleccione una kermesse valida")]
         public int id_kermesse { get; set; }
+        [Display(Name = "Categoria de Gasto")]
+        [Required(ErrorMessage = "Seleccione una categoria valida")]
         public int id_cat_gasto { get; set; }
+        [Display(Name = "Fecha del Gasto")]
+        [Required(ErrorMessage = "Introduzca una fecha valida!")]
         public System.DateTime fecha_gasto { get; set; }
+        [Display(Name = "Concepto del Gasto")]
+        [Required(ErrorMessage = "Introduzca un concepto valido!")]
+        [StringLength(200, ErrorMessage = "ha excedido el numero de caracteres permitidos para este campo")]
         public string concepto { get; set; }
+        [Display(Name = "Monto del Gasto")]
+        [Required(ErrorMessage = "Introduzca un monto valido")]
         public decimal monto { get; set; }
         public int estado { get; set; }
         public Nullable<int> usuario_creacion { get; set; }

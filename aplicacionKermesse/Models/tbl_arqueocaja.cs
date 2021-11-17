@@ -11,7 +11,7 @@ namespace aplicacionKermesse.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class tbl_arqueocaja
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +21,13 @@ namespace aplicacionKermesse.Models
         }
     
         public int id_arqueocaja { get; set; }
+        [Display(Name = "Kermesse")]
+        [Required(ErrorMessage = "Seleccione una kermesse valida")]
         public int idkermesse { get; set; }
+        [Display(Name = "Fecha de Arqueo")]
+        [Required(ErrorMessage = "Introduzca una fecha valida!")]
         public System.DateTime fecha_arqueo { get; set; }
+        [Display(Name = "Total del Arqueo")]
         public decimal gran_total { get; set; }
         public Nullable<System.DateTime> fecha_creacion { get; set; }
         public Nullable<System.DateTime> fecha_modificacion { get; set; }

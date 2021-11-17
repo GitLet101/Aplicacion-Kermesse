@@ -1,0 +1,42 @@
+﻿@model aplicacionKermesse.Models.tbl_cat_gastos
+
+@{
+    ViewBag.Title = "Modificar Categoria de Gastos";
+}
+<h2>Modificar CategoriaGasto</h2>
+
+@using (Html.BeginForm("ActualizarCategoriaGasto", "categoriaGasto", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id_cat_gasto)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombre_cat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre_cat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre_cat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.desc_cat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.desc_cat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.desc_cat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="reset" class="btn-warning btn" name="btnLimpiar">Limpiar</button>
+                <a href="@Url.Action("categoriaGasto")" class="btn btn-danger"> Regresar </a>
+            </div>
+        </div>
+    </div>
+}

@@ -6,50 +6,61 @@
 
 <h2>Gestion de Moneda</h2>
 
-<p>
-    <a href="@Url.Action("guardarMoneda")" class="btn btn-default"> <i class="glyphicon glyphicon-plus"></i> Nueva Moneda </a>
-</p>
-
 @using (Html.BeginForm("FiltrarMoneda", "moneda", FormMethod.Post))
 {
-    <div class="row">
-        <div class="form-group col-xs-12">
-            @Html.TextBox("cadena", null, new { @class = "form-control col-md-4", @placeholder = "Buscar" })
-            <span class="input-group">
-                <button type="submit" class="btn btn-block btn-success col-md-4"> Buscar </button>
-            </span>
+    <div class="row justify-content-md-end" style="padding-bottom: 1rem;">
+        <div class="col-md-auto" style="padding-right:12rem;">
+            <p>
+                <a href="@Url.Action("guardarMoneda")"
+                   class="btn btn-primary">
+                    <ion-icon name="add-outline"></ion-icon>
+                    <span>
+                        <strong>Añadir Nuevo</strong>
+                    </span>
+                </a>
+            </p>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                @Html.TextBox("cadena", null, new { @class = "form-control col-sm-10", @placeholder = "Buscar", @name = "search-outline" } )
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success">
+                        <i data-feather="search"></i>Buscar
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-}
+        }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.signo)
-        </th>
-        <th>
-            Opciones
-        </th>
-    </tr>
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.signo)
+                </th>
+                <th>
+                    Opciones
+                </th>
+            </tr>
 
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.signo)
-    </td>
-    <td>
-        <a href="@Url.Action("VerMoneda", new { id = item.id_moneda })" class="btn btn-xs btn-primary"> <i class="glyphicon glyphicon-eye-open"></i> Detalles </a>
-        <a href="@Url.Action("EditarMoneda", new { id = item.id_moneda })" class="btn btn-xs btn-warning"> <i class="glyphicon glyphicon-pencil"></i> Modificar </a>
-        <a href="@Url.Action("borrarMoneda", new { id = item.id_moneda })" class="btn btn-xs btn-danger"> <i class="glyphicon glyphicon-trash"></i> Eliminar </a>
-    </td>
-</tr>
-    }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-wrap" style="width: 20rem;">
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td class="text-wrap" style="width: 10rem;">
+                        @Html.DisplayFor(modelItem => item.signo)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("EditarMoneda", new { id = item.id_moneda })"><ion-icon name="create-outline" style=" font-size: 20px; pointer-events:none;"></ion-icon></a>
+                        <a href="@Url.Action("VerMoneda", new { id = item.id_moneda })"><ion-icon name="document-text-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                        <a href="@Url.Action("borrarMoneda", new { id = item.id_moneda })"><ion-icon name="trash-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>

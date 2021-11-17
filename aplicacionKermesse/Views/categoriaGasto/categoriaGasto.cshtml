@@ -1,0 +1,66 @@
+﻿@model IEnumerable<aplicacionKermesse.Models.tbl_cat_gastos>
+
+@{
+    ViewBag.Title = "Gestion de categoriaGasto";
+}
+
+<h2>Gestion de categoriaGasto</h2>
+
+@using (Html.BeginForm("FiltrarCategoriaGasto", "categoriaGasto", FormMethod.Post))
+{
+    <div class="row justify-content-md-end" style="padding-bottom: 1rem;">
+        <div class="col-md-auto" style="padding-right:12rem;">
+            <p>
+                <a href="@Url.Action("guardarCategoriaGasto")"
+                   class="btn btn-primary">
+                    <ion-icon name="add-outline"></ion-icon>
+                    <span>
+                        <strong>Añadir Nuevo</strong>
+                    </span>
+                </a>
+            </p>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                @Html.TextBox("cadena", null, new { @class = "form-control col-sm-10", @placeholder = "Buscar", @name = "search-outline" } )
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success">
+                        <i data-feather="search"></i>Buscar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+        }
+
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombre_cat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.desc_cat)
+                </th>
+                <th>
+                    Opciones
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-wrap" style="width: 20rem;">
+                        @Html.DisplayFor(modelItem => item.nombre_cat)
+                    </td>
+                    <td class="text-wrap" style="width: 40rem;">
+                        @Html.DisplayFor(modelItem => item.desc_cat)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("EditarcategoriaGasto", new { id = item.id_cat_gasto })"><ion-icon name="create-outline" style=" font-size: 20px; pointer-events:none;"></ion-icon></a>
+                        <a href="@Url.Action("VercategoriaGasto", new { id = item.id_cat_gasto })"><ion-icon name="document-text-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                        <a href="@Url.Action("borrarcategoriaGasto", new { id = item.id_cat_gasto})"><ion-icon name="trash-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                    </td>
+                </tr>
+            }
+
+        </table>

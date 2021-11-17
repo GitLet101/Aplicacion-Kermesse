@@ -1,0 +1,33 @@
+﻿@model aplicacionKermesse.Models.tbl_cat_gastos
+@{
+    ViewBag.Title = "Guardar CategoriaGasto";
+}
+
+<style>
+    .error{
+        color: red;
+    }
+</style>
+@using(Html.BeginForm("Guardar", "categoriaGasto", FormMethod.Post))
+{
+<div class="container" style="padding-top: 1rem;">
+    <div class="form-group">
+        <label>Nombre de la Categoria de Gastos</label>
+        @Html.ValidationMessageFor(x => x.nombre_cat, "", new { @class = "text-danger" })
+        @Html.TextBoxFor(x => x.nombre_cat, new { @class = "form-control", @placeholder = "Categoria" })
+    </div>
+
+    <div class="form-group">
+        <label>Desripcion de la Categoria de Gastos</label>
+        @Html.ValidationMessageFor(x => x.desc_cat, "", new { @class = "text-danger" })
+        @Html.TextBoxFor(x => x.desc_cat, new { @class = "form-control", @placeholder = "$" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="reset" class="btn-warning btn" name="btnLimpiar">Limpiar</button>
+        <a href="@Url.Action("categoriaGasto")" class="btn btn-danger"> Regresar </a>
+        <!--Html.ActionLink("Regresar", "categoriaGasto") -->
+    </div>
+</div>
+ }

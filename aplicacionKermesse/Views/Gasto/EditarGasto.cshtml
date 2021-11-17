@@ -1,0 +1,78 @@
+﻿@model aplicacionKermesse.Models.tbl_gastos
+@{
+    ViewBag.Title = "Modificar Gastos";
+    aplicacionKermesse.Models.BD_KermesseEntities db = new aplicacionKermesse.Models.BD_KermesseEntities();
+    List<aplicacionKermesse.Models.tbl_cat_gastos> ListCat = db.tbl_cat_gastos.ToList();
+    List<aplicacionKermesse.Models.tbl_kermesse> ListKer = db.tbl_kermesse.ToList();
+}
+
+@using (Html.BeginForm("ActualizarGasto", "gasto", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Modificar Gastos</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id_gasto)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.concepto, "concepto", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.concepto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.concepto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.id_cat_gasto, "Categoria", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(
+                              model => model.id_cat_gasto,
+                              new SelectList(ListCat, "id_cat_gasto", "nombre_cat"),
+                              "Seleccione una Categoria ...",
+                              new { htmlAttributes = new { @class = "form-control custom-select" } }
+                             )
+            @Html.ValidationMessageFor(model => model.id_cat_gasto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.id_kermesse, "Kermesse", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(
+                                  model => model.id_kermesse,
+                                  new SelectList(ListKer, "id_kermesse", "nombre"),
+                                  "Seleccione una Kermesse ...",
+                                  new { htmlAttributes = new { @class = "form-control custom-select" } }
+                                 )
+            @Html.ValidationMessageFor(model => model.id_kermesse, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.monto, "Monto", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.monto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.monto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fecha_gasto, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input class="form-control" name="fecha_gasto" id="fecha_gasto" type="date"
+                   placeholder="dd/MM/yyyy" title="Introduzca una Fecha" required />
+            @Html.ValidationMessageFor(model => model.fecha_gasto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar" name="btnGuardar" class="btn btn-success" />
+            <button type="reset" class="btn-warning btn" name="btnLimpiar" value="reset">Limpiar</button>
+            <a href="@Url.Action("gasto")" class="btn btn-default"> Regresar </a>
+        </div>
+    </div>
+</div>
+}

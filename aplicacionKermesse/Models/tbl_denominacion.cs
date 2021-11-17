@@ -11,8 +11,7 @@ namespace aplicacionKermesse.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_denominacion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,16 +21,8 @@ namespace aplicacionKermesse.Models
         }
     
         public int id_denominacion { get; set; }
-        
-        [Display(Name = "Nombre de la moneda")]
-        [Required(ErrorMessage = "Escoja el nombre de la moneda")]
         public int id_moneda { get; set; }
-        [Display(Name = "Valor de la denominacion")]
-        [Required(ErrorMessage = "Introduzca el valor numerico de la denominacion")]
         public decimal valor { get; set; }
-        [Display(Name = "Valor en letras de la denominacion")]
-        [Required(ErrorMessage = "Introduzca el valor de la denominacion en forma textual")]
-        [StringLength(10, ErrorMessage = "La cantidad de caracteres permitida para este campo es de 250")]
         public string valor_letras { get; set; }
         public int estado { get; set; }
     

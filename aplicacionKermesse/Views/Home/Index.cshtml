@@ -2,30 +2,93 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!-- partial -->
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-12 grid-margin">
+        <div class="row">
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                <h2 class="font-weight-bold">Bienvenidos a Kermesse!</h2>
+                <h6 class="font-weight-normal mb-0">El sistema que te ayudará a gestionar mejor las actividades realizadas en cada <span class="text-primary">Kermesse!</span></h6>
+            </div>
+        </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="tale-bg">
+            <div class="card-people mt-auto">
+                <img src="https://i.pinimg.com/originals/9e/92/0a/9e920aa182c05bd4ebff501b5e5e61a1.jpg" alt="people">
+                <div class="weather-info">
+                    <div class="d-flex">
+                        <div>
+                            <h2 style="color: cornflowerblue;" class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
+                        </div>
+                        <div class="ml-2">
+                            <h4 style="color: cornflowerblue;" class="location font-weight-normal">Managua</h4>
+                            <h6 style="color: cornflowerblue;" class="font-weight-normal">Nicaragua</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-dark-blue" style="background-color: coral" >
+            <div class="card-body">
+                <h2 class="mb-6">Arqueo de Caja</h2>
+                <div>
+                    <p>Más detalles</p>
+                    <a href="@Url.Action("arqueoCaja", "arqueoCaja" )" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-light-blue" >
+            <div class="card-body">
+                <h2 class="mb-6">Moneda</h2>
+                <div>
+                    <p>Más detalles</p>
+                    <a href="@Url.Action("moneda", "moneda" )" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-dark-blue" style="background-color: burlywood">
+            <div class="card-body">
+                <h2 class="mb-6">Denominacion</h2>
+                <div>
+                    <p>Más detalles</p>
+                    <a href="@Url.Action("denominacion", "denominacion" )" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-light-danger">
+            <div class="card-body">
+                <h2 class="mb-6">Gastos</h2>
+                <div>
+                    <p>Más detalles</p>
+                    <a href="@Url.Action("gasto", "gasto" )" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-dark-blue" >
+            <div class="card-body">
+                <h2 class="mb-6">Categoria de Gastos</h2>
+                <div>
+                    <p>Más detalles</p>
+                    <a href="@Url.Action("categoriaGasto", "categoriaGasto" )" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

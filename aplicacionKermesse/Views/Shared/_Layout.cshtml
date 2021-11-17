@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com//ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -214,10 +217,10 @@
                             <span class="menu-title">Caja</span>
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                         </a>
-                        <div class="" id="ui-basic">
+                        <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                
-                                <li class="nav-item nav-link"> @Html.ActionLink("Moneda", "moneda", "moneda", null, new { @class = "nav-link" })</li>
+
+                                <li class="nav-item"> @Html.ActionLink("Moneda", "moneda", "moneda", null, new { @class = "nav-link" })</li>
                                 <li class="nav-item"> @Html.ActionLink("Denominacion", "denominacion", "denominacion", null, new { @class = "nav-link" })</li>
                                 <li class="nav-item"> @Html.ActionLink("Ingreso de Comunidad", "ingresoComunidad", "ingresoComunidad", null, new { @class = "nav-link" })</li>
                                 <li class="nav-item"> @Html.ActionLink("Ingreso de Comunidad Detalle", "ingresoComDetalle", "ingresoComDetalle", null, new { @class = "nav-link" })</li>
@@ -231,7 +234,7 @@
                             <span class="menu-title">Control de Gastos</span>
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                         </a>
-                        <div class="" id="form-elements">
+                        <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> @Html.ActionLink("Gastos", "gasto", "gasto", null, new { @class = "nav-link" })</li>
                                 <li class="nav-item"> @Html.ActionLink("Categoria de Gasto", "categoriaGasto", "categoriaGasto", null, new { @class = "nav-link" })</li>
@@ -268,7 +271,13 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Scripts/hoverable-collapse.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#tableId').DataTable();
+        });
+    </script>
     @RenderSection("scripts", required: false)
 
 </body>

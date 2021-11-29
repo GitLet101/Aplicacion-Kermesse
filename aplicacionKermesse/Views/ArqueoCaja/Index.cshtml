@@ -1,17 +1,17 @@
-﻿@model IEnumerable<aplicacionKermesse.Models.tbl_denominacion>
+﻿@model IEnumerable<aplicacionKermesse.Models.tbl_arqueocaja>
 
 @{
-    ViewBag.Title = "Gestion de Denominacion";
+    ViewBag.Title = "Gestion de Arqueo Caja";
 }
 
-<h2>Gestion de Denominacion</h2>
+<h2>Gestion de Arqueo Caja</h2>
 
-@using (Html.BeginForm("FiltrarDenominacion", "denominacion", FormMethod.Post))
+@using (Html.BeginForm("FiltrarArqueoCaja", "arqueoCaja", FormMethod.Post))
 {
     <div class="row justify-content-md-end" style="padding-bottom: 1rem;">
         <div class="col-md-auto" style="padding-right:12rem;">
             <p>
-                <a href="@Url.Action("guardarDenominacion")"
+                <a href="@Url.Action("guardarArqueo")"
                    class="btn btn-primary">
                     <ion-icon name="add-outline"></ion-icon>
                     <span>
@@ -36,13 +36,13 @@
 <table class="table table-hover">
     <tr>
         <th>
-            Moneda
+            @Html.DisplayNameFor(model => model.idkermesse)
         </th>
         <th>
-            Valor Letras
+            @Html.DisplayNameFor(model => model.fecha_arqueo)
         </th>
         <th>
-            Valor Numerico
+            @Html.DisplayNameFor(model => model.gran_total)
         </th>
         <th>
             Opciones
@@ -53,18 +53,18 @@
     {
         <tr>
             <td class="text-wrap" style="width: 20rem;">
-                @Html.DisplayFor(modelItem => item.tbl_moneda.nombre) (@Html.DisplayFor(modelItem => item.tbl_moneda.signo))
+                @Html.DisplayFor(modelItem => item.tbl_kermesse.nombre)
             </td>
             <td class="text-wrap" style="width: 20rem;">
-                @Html.DisplayFor(modelItem => item.valor_letras)
+                @Html.DisplayFor(modelItem => item.fecha_arqueo)
             </td>
             <td class="text-wrap" style="width: 10rem;">
-                @Html.DisplayFor(modelItem => item.valor)
+                @Html.DisplayFor(modelItem => item.gran_total)
             </td>
             <td>
-                <a href = "@Url.Action("EditarDenominacion", new { id = item.id_denominacion })"><ion-icon name="create-outline" style=" font-size: 20px; pointer-events:none;"></ion-icon></a>
-                <a href="@Url.Action("VerDenominacion", new { id = item.id_denominacion })"><ion-icon name="document-text-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
-                <a href="@Url.Action("borrarDenominacion", new { id = item.id_denominacion })" ><ion-icon name="trash-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                <a href="@Url.Action("EditarArqueoCaja", new { id = item.id_arqueocaja })"><ion-icon name="create-outline" style=" font-size: 20px; pointer-events:none;"></ion-icon></a>
+                <a href="@Url.Action("VerArqueoCaja", new { id = item.id_arqueocaja })"><ion-icon name="document-text-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                <a href="@Url.Action("borrarArqueoCaja", new { id = item.id_arqueocaja })"><ion-icon name="trash-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
             </td>
         </tr>
     }

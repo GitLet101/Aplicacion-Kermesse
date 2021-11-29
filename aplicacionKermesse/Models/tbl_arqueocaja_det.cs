@@ -15,10 +15,18 @@ namespace aplicacionKermesse.Models
     public partial class tbl_arqueocaja_det
     {
         public int id_arqueocaja_det { get; set; }
+        [Display(Name = "Arqueo Maestro")]
         public int id_arqueocaja { get; set; }
+        [Display(Name = "Moneda")]
+        [Required(ErrorMessage = "Seleccione una moneda valida")]
         public int id_moneda { get; set; }
+        [Display(Name = "Denominacion")]
+        [Required(ErrorMessage = "Seleccion una denominacion valida")]
         public int id_denominacion { get; set; }
+        [Display(Name = "Cantidad")]
+        [Required(ErrorMessage = "Seleccion una cantidad valida")]
         public decimal cantidad { get; set; }
+        [Display(Name = "SubTotal")]
         public decimal subtotal { get; set; }
 
         [Display(Name = "Arqueo Maestro")]

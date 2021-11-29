@@ -130,6 +130,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\arqueoCajaController.cs" />
     <Compile Include="Controllers\categoriaGastoController.cs" />
     <Compile Include="Controllers\categoriaGastoController.cs" />
     <Compile Include="Controllers\gastoController.cs" />
@@ -2094,6 +2095,9 @@
     <Content Include="vendors\ti-icons\fonts\themify.ttf" />
     <Content Include="vendors\ti-icons\fonts\themify.woff" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ArqueoCaja\Index.cshtml" />
+    <Content Include="Views\ArqueoCaja\guardarArqueo.cshtml" />
+    <Content Include="Views\ArqueoCaja\VerArqueoCaja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

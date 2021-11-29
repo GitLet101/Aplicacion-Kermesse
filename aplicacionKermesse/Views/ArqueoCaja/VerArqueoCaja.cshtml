@@ -1,0 +1,84 @@
+﻿@model aplicacionKermesse.Models.tbl_arqueocaja
+
+<div>
+    <h4>tbl_arqueocaja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_kermesse.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_kermesse.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_arqueo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_arqueo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gran_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gran_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_usuario.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_usuario.usuario)
+        </dd>
+    </dl>
+
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idkermesse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_arqueo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gran_total)
+            </th>
+            <th>
+                Opciones
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-wrap" style="width: 20rem;">
+                    @Html.DisplayFor(modelItem => item.tbl_kermesse.nombre)
+                </td>
+                <td class="text-wrap" style="width: 20rem;">
+                    @Html.DisplayFor(modelItem => item.fecha_arqueo)
+                </td>
+                <td class="text-wrap" style="width: 10rem;">
+                    @Html.DisplayFor(modelItem => item.gran_total)
+                </td>
+                <td>
+                    <a href="@Url.Action("EditarArqueoCaja", new { id = item.id_arqueocaja })"><ion-icon name="create-outline" style=" font-size: 20px; pointer-events:none;"></ion-icon></a>
+                    <a href="@Url.Action("VerArqueoCaja", new { id = item.id_arqueocaja })"><ion-icon name="document-text-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                    <a href="@Url.Action("borrarArqueoCaja", new { id = item.id_arqueocaja })"><ion-icon name="trash-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_arqueocaja }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

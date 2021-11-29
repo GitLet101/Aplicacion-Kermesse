@@ -1,0 +1,287 @@
+﻿@model  Tuple<aplicacionKermesse.Models.tbl_arqueocaja, aplicacionKermesse.Models.tbl_arqueocaja_det>
+
+@{
+    ViewBag.Title = "Guardar Arqueo Caja";
+    aplicacionKermesse.Models.BD_KermesseEntities db = new aplicacionKermesse.Models.BD_KermesseEntities();
+    List<aplicacionKermesse.Models.tbl_kermesse> ListKermesse = db.tbl_kermesse.ToList();
+    List<aplicacionKermesse.Models.tbl_moneda> ListMoneda = db.tbl_moneda.ToList();
+    List<aplicacionKermesse.Models.tbl_denominacion> ListDenominacion = db.tbl_denominacion.ToList();
+}
+
+<style>
+    .dropdown-class {
+        color: #3c3d3d;
+        font-size: 14px;
+        padding: 7px;
+        border: 1px solid #CED4DA;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        width: 100%;
+        height: 2.8rem;
+        font-weight: 400;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    #tabla-arqueo {
+        font-family: "Nunito", sans-serif;
+        font-weight: initial;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+        font-size: 1rem;
+    }
+</style>
+
+@using (Html.BeginForm("Guardar", "arqueoCaja", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <!-- form buttons -->
+    <div>
+        <div class="row" style="padding-left:25rem; padding-right:25rem;">
+            <div class="col">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-rounded btn-success">Guardar</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <button type="reset" class="btn btn-block btn-rounded btn-danger">Limpiar</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <a class="btn btn-rounded btn-block btn-inverse-info" href="@Url.Action("../ArqueoCaja")"> Regresar </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header form card -->
+    <div class="col-12 stretch-card">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0 d-flex justify-content-center">
+                <div class="col-11">
+                    <div class="card-body ">
+                        <div class="card-title">
+                            <h3 style="padding-top: 1rem;">Añadir nuevo Arqueo de Caja</h3>
+                        </div>
+                        <div class="card-description" style="padding-bottom: 1rem;">
+                            Llene el siguiente formulario para añadir un nuevo recuento de transacciones.
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Item1.idkermesse, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(model => model.Item1.idkermesse, new SelectList(ListKermesse, "id_kermesse", "nombre"), "Seleccione...", new { @class = "dropdown-class", @id = "kermess" })
+                                    @Html.ValidationMessageFor(model => model.Item1.idkermesse, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group" style="margin-right:-7rem;">
+                                    @Html.LabelFor(model => model.Item1.fecha_arqueo, htmlAttributes: new { @class = "control-label" })
+                                    <div class="col-md-10">
+                                        <input class="form-control" name="fecha_arqueo" id="fecha_arqueo" type="date"
+                                               placeholder="dd/MM/yyyy" title="Introduzca una Fecha" required />
+                                        @Html.ValidationMessageFor(model => model.Item1.fecha_arqueo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- card for details -->
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0 d-flex justify-content-center">
+                <div class="col-11">
+                    <div class="card-body ">
+                        <div class="card-title">
+                            <h3 style="padding-top: 1rem;">Manejo de Transacciones</h3>
+                        </div>
+                        <div class="card-description" style="padding-bottom: 1rem;">
+                            Utilize el siguiente formulario para el manejo de transacciones de este arqueo.
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Item2.id_moneda, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(model => model.Item2.id_moneda, new SelectList(ListMoneda, "id_moneda", "nombre"), "Seleccione...", new { @class = "dropdown-class", @id = "mons", /*@onChange = "selectedText(this)"*/ })
+                                    @Html.ValidationMessageFor(model => model.Item2.id_moneda, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Item2.id_denominacion, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(model => model.Item2.id_denominacion, new SelectList(ListDenominacion, "id_denominacion", "valor_letras"), "Seleccione...", new { @class = "dropdown-class", @id = "denom", @onChange = "changetext(this);" })
+                                    @Html.ValidationMessageFor(model => model.Item2.id_denominacion, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.Item2.id_denominacion, new SelectList(ListDenominacion, "id_denominacion", "valor"), "Seleccione...", new { @class = "dropdown-class", @id = "skeddadle", @type = "hidden" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Item2.cantidad, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Item2.cantidad, new { htmlAttributes = new { @class = "form-control", @id = "cant" } })
+                                    @Html.ValidationMessageFor(model => model.Item2.cantidad, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group" style="margin-top: 2rem;">
+                                    <button type="button" id="agregar-button" onclick="Agregar(); return false;" class="btn btn-outline-primary btn-block">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="text-danger field-validation-error" data-valmsg-for="agregar-button" data-valmsg-replace="true" style="margin-top:2rem;">
+                                <span id="agregar-error" class=""></span> <br />
+                            </span>
+                        </div>
+
+                        <br />
+                        <div class="col-xl">
+                            <div class="table-responsive" id="header-arqueo">
+                                <table class="table table-hover" name="tablaprueba" id="tabla-arqueo" width="50%" style="text-align: center;" cellspacing="0">
+
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Moneda</th>
+                                            <th>Denominacion</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                            <!--<th width="15%">Acción</th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       @* <tr>
+                                            <td> <a href="#" onClick='deleteRow(this.parentNode)'><ion-icon name="trash-outline" style=" font-size: 20px; pointer-events: none;"></ion-icon></a> </td>
+                                        </tr>*@
+                                    </tbody>
+                                </table>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var num = 0;
+        var skeddadle = document.getElementById('skeddadle');
+        skeddadle.style.visibility = 'hidden';
+
+        function Agregar() {
+            document.getElementById("agregar-error").innerHTML = "";
+            var MonedaID = document.getElementById("mons").value;
+            var DenominacionID = document.getElementById("denom").value;
+            var Moneda = $("#mons option:selected").text();
+            var Denominacion = $("#denom option:selected").text();
+            var DenominacionNumerica = document.getElementById("skeddadle").value;
+            var Cantidad = document.getElementById("cant").value;
+            var Subtotal;
+
+            try {
+
+                //validacion
+                if (MonedaID == "") throw "Seleccione una Moneda Valida!";
+                if (DenominacionID == "") throw "Seleccione una Denominacion Valida!";
+                if (isNaN(Cantidad) || Cantidad == "") throw "Seleccione una Cantidad Valida!";
+
+                //calculo de subtotal
+                Subtotal = DenominacionNumerica * Cantidad;
+
+                //Insert de fila
+                $("#header-arqueo").show();
+                var tabla = document.getElementById("tabla-arqueo");
+
+                var fila = document.createElement("tr");
+                var cell;
+                var cellText = [5];
+
+                cellText[0] = document.createTextNode(num);
+                cellText[1] = document.createTextNode(Moneda);
+                cellText[2] = document.createTextNode(Denominacion);
+                cellText[3] = document.createTextNode(Cantidad);
+                cellText[4] = document.createTextNode(Subtotal);
+
+                for (let i = 0; i < 5; i++) {
+                    cell = document.createElement("td");
+                    cell.appendChild(cellText[i]);
+                    fila.appendChild(cell);
+                }
+
+                tabla.appendChild(fila);
+                @* let TDProducto = document.createElement("td");
+                let TDPrecio = document.createElement("td");
+                TR.appendChild(TDProducto);
+                TR.appendChild(TDPrecio);
+                TDProducto.innerHTML = productonombre;
+                TDPrecio.innerHTML = precio;
+                tabla.appendChild(TR);
+                *@
+
+                //agregamos hiddens
+                let DivTabla = document.getElementById("header-arqueo");
+                let HiddenIndex = document.createElement("input");
+                let HiddenMoneda = document.createElement("input");
+                let HiddenDenominacion = document.createElement("input");
+                let HiddenCantidad = document.createElement("input");
+                let HiddenSubtotal = document.createElement("input");
+
+                HiddenIndex.name = "arqueocaja_Dets.Index";
+                HiddenIndex.value = num;
+                HiddenIndex.type = "hidden";
+
+                HiddenMoneda.name = "arqueocaja_Dets[" + num + "].id_moneda";
+                HiddenMoneda.value = MonedaID;
+                HiddenMoneda.type = "hidden";
+
+                HiddenDenominacion.name = "arqueocaja_Dets[" + num + "].id_denominacion";
+                HiddenDenominacion.value = DenominacionID;
+                HiddenDenominacion.type = "hidden";
+
+                HiddenCantidad.name = "arqueocaja_Dets[" + num + "].cantidad";
+                HiddenCantidad.value = Cantidad ;
+                HiddenCantidad.type = "hidden";
+
+                HiddenSubtotal.name = "arqueocaja_Dets[" + num + "].subtotal";
+                HiddenSubtotal.value = Subtotal;
+                HiddenSubtotal.type = "hidden";
+
+                DivTabla.appendChild(HiddenIndex);
+                DivTabla.appendChild(HiddenMoneda);
+                DivTabla.appendChild(HiddenDenominacion);
+                DivTabla.appendChild(HiddenCantidad);
+                DivTabla.appendChild(HiddenSubtotal);
+
+                num++
+            } catch (err) {
+                document.getElementById("agregar-error").innerHTML = err;
+            } finally {
+                var MonedaID = document.getElementById("mons").value = "";
+                var DenominacionID = document.getElementById("denom").value = "";
+                var Cantidad = document.getElementById("cant").value = "";
+                var Cantidad = document.getElementById("skeddadle").value = "";
+            }
+        }
+    </script>
+
+    <script>
+        function changetext(thistext) {
+            var selvalue = thistext.value;
+            $('#skeddadle').val(selvalue);
+        }
+    </script>
+
+    <script>
+        function deleteRow(row) {
+            windows.alert(row);
+        }
+    </script>
+}

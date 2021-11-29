@@ -113,5 +113,17 @@ namespace aplicacionKermesse.Controllers
                 return View();
             }
         }
+
+        public List<tbl_denominacion> GetDenominacionList(int monID)
+        {
+            List<tbl_denominacion> denom = db.tbl_denominacion.Where(x => x.id_moneda == monID).ToList();
+            return denom;
+        }
+
+        public tbl_denominacion GetDenominacion(int id)
+        {
+            tbl_denominacion denom = db.tbl_denominacion.Where(x => x.id_denominacion == id).First();
+            return denom;
+        }
     }
 }
